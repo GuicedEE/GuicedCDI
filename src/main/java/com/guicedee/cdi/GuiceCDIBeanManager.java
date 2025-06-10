@@ -4,10 +4,17 @@ import com.google.inject.Key;
 import com.google.inject.Singleton;
 import com.google.inject.name.Names;
 import com.guicedee.client.IGuiceContext;
+import jakarta.el.ELResolver;
+import jakarta.el.ExpressionFactory;
+import jakarta.enterprise.context.spi.Context;
+import jakarta.enterprise.context.spi.Contextual;
+import jakarta.enterprise.context.spi.CreationalContext;
+import jakarta.enterprise.inject.spi.*;
+import jakarta.enterprise.util.TypeLiteral;
 
 import java.lang.annotation.Annotation;
-import java.util.HashSet;
-import java.util.Set;
+import java.lang.reflect.Type;
+import java.util.*;
 
 /**
  * A CDI bean manager implementation that uses Google Guice as the underlying dependency injection framework.
@@ -32,11 +39,12 @@ import java.util.Set;
  *    {@code boolean exists = beanManager.containsBean(MyBean.class);}
  * 
  * This class is registered as a Guice singleton by the GuiceCDIModule.
+ * The GuiceCDIBeanManagerAdapter class implements the Jakarta CDI BeanManager interface
+ * and delegates to this class to provide compatibility with Jakarta CDI.
  */
 @Singleton
 public class GuiceCDIBeanManager
 {
-
     /**
      * Gets an instance of the specified type.
      * 
