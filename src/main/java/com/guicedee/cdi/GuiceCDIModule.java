@@ -2,7 +2,7 @@ package com.guicedee.cdi;
 
 import com.google.inject.AbstractModule;
 import com.google.inject.Singleton;
-import com.guicedee.guicedinjection.interfaces.IGuiceModule;
+import com.guicedee.client.services.lifecycle.IGuiceModule;
 import jakarta.enterprise.inject.spi.CDI;
 
 /**

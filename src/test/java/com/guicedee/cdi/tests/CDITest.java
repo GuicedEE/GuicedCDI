@@ -3,7 +3,7 @@ package com.guicedee.cdi.tests;
 import com.google.inject.AbstractModule;
 import com.google.inject.name.Names;
 import com.guicedee.client.IGuiceContext;
-import com.guicedee.guicedinjection.interfaces.IGuiceModule;
+import com.guicedee.client.services.lifecycle.IGuiceModule;
 import com.guicedee.cdi.CDI;
 import com.guicedee.cdi.GuiceCDIBeanManager;
 import org.junit.jupiter.api.BeforeAll;

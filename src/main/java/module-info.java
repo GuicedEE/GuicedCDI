@@ -4,7 +4,7 @@ import com.guicedee.cdi.GuiceCDIModule;
 import com.guicedee.cdi.GuiceCDIProviderImpl;
 import com.guicedee.cdi.ICDIProvider;
 import com.guicedee.cdi.implementations.*;
-import com.guicedee.guicedinjection.interfaces.IGuiceModule;
+import com.guicedee.client.services.lifecycle.IGuiceModule;
 
 module com.guicedee.cdi {
     exports com.guicedee.cdi;
