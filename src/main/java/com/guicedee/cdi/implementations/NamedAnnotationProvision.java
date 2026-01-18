@@ -6,8 +6,17 @@ import com.google.inject.name.Names;
 
 import java.lang.annotation.Annotation;
 
+/**
+ * Converts CDI @Named annotations into Guice Named bindings.
+ */
 public class NamedAnnotationProvision implements NamedAnnotationProvider
 {
+    /**
+     * Builds a Guice Named annotation from a CDI annotation instance.
+     *
+     * @param annotationType The CDI annotation instance
+     * @return The Guice Named annotation, or null when unsupported
+     */
     @Override
     public Named getNamedAnnotation(Annotation annotationType)
     {
@@ -17,6 +26,12 @@ public class NamedAnnotationProvision implements NamedAnnotationProvider
         return null;
     }
 
+    /**
+     * Builds a Guice Named annotation from a CDI annotation type.
+     *
+     * @param annotationType The CDI annotation type
+     * @return The Guice Named annotation, or null when unsupported
+     */
     @Override
     public Named getNamedAnnotation(Class<? extends Annotation> annotationType)
     {

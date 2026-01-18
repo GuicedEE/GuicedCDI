@@ -15,13 +15,52 @@
     <version>2.0.0-SNAPSHOT</version>
     <name>Guiced CDI</name>
 
-    <description>A bridge between GuicedEE and Jakarta CDI
-    </description>
+    <description>GuicedEE CDI provides a lightweight bridge that integrates Google Guice modules with Jakarta CDI runtimes.</description>
+    <url>${project.baseUrl}</url>
 
     <properties>
         <ignore.moditect>true</ignore.moditect>
         <flatten.pom>false</flatten.pom>
+        <project.scm.nameUrl>/GuicedEE/Guiced-CDI</project.scm.nameUrl>
     </properties>
+
+    <licenses>
+        <license>
+            <name>Apache License 2.0</name>
+            <url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
+    <organization>
+        <name>Guiced EE</name>
+        <url>https://guicedee.com</url>
+    </organization>
+
+    <scm>
+        <url>${project.baseUrl}.git</url>
+        <connection>scm:git:${project.baseUrl}.git</connection>
+        <developerConnection>scm:git:${project.baseUrl}.git</developerConnection>
+    </scm>
+
+    <developers>
+        <developer>
+            <id>GedMarc</id>
+            <name>Marc Magon</name>
+            <email>marc.magon@gmail.com</email>
+            <url>https://github.com/GedMarc</url>
+        </developer>
+    </developers>
+
+    <issueManagement>
+        <system>GitHub</system>
+        <url>${project.baseUrl}/issues</url>
+    </issueManagement>
+
+    <ciManagement>
+        <system>GitHub Actions</system>
+        <url>${project.baseUrl}/actions</url>
+    </ciManagement>
 
     <dependencies>
 
