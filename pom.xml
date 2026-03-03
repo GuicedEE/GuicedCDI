@@ -21,7 +21,7 @@
     <properties>
         <ignore.moditect>true</ignore.moditect>
         <flatten.pom>false</flatten.pom>
-        <project.scm.nameUrl>/GuicedEE/Guiced-CDI</project.scm.nameUrl>
+        <project.scm.nameUrl>/GuicedEE/GuicedCDI</project.scm.nameUrl>
     </properties>
 
     <licenses>
