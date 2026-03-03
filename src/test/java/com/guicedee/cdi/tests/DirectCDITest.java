@@ -21,21 +21,6 @@ public class DirectCDITest {
     private static Injector injector;
 
     /**
-     * A simple test bean class.
-     */
-    public static class TestBean {
-        private final String name;
-
-        public TestBean(String name) {
-            this.name = name;
-        }
-
-        public String getName() {
-            return name;
-        }
-    }
-
-    /**
      * A test module that binds the TestBean with a qualifier.
      */
     public static class TestModule extends AbstractModule {
@@ -76,8 +61,6 @@ public class DirectCDITest {
         // Get a bean through the bean manager
         GuiceCDIBeanManager beanFromManager = beanManager.getBean(GuiceCDIBeanManager.class);
         assertNotNull(beanFromManager, "Bean from manager should not be null");
-        // We can't assert that they're the same instance because the bean manager uses IGuiceContext.get()
-        // which creates a new instance each time
         assertNotNull(beanFromManager, "Bean from manager should not be null");
     }
 
@@ -88,7 +71,6 @@ public class DirectCDITest {
         assertNotNull(beanManager, "Bean manager should not be null");
 
         // Get a bean with a qualifier through the bean manager
-        // We need to use the injector directly because the bean manager uses IGuiceContext.get()
         TestBean bean = injector.getInstance(Key.get(TestBean.class, Names.named("testBean")));
         assertNotNull(bean, "Bean should not be null");
         assertEquals("test", bean.getName(), "Bean name should match");

@@ -1,10 +1,7 @@
 package com.guicedee.cdi.tests;
 
-import com.google.inject.AbstractModule;
-import com.google.inject.name.Names;
 import com.guicedee.cdi.GuiceCDIBeanManager;
 import com.guicedee.client.IGuiceContext;
-import com.guicedee.client.services.lifecycle.IGuiceModule;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
@@ -15,28 +12,9 @@ import static org.junit.jupiter.api.Assertions.*;
  */
 public class SimpleCDIBeanManagerTest {
 
-    /**
-     * A test module that binds the TestBean with a qualifier.
-     */
-    public static class TestModule extends AbstractModule implements IGuiceModule<TestModule> {
-        @Override
-        protected void configure() {
-            bind(TestBean.class).annotatedWith(Names.named("testBean")).toInstance(new TestBean("test"));
-        }
-
-        @Override
-        public Integer sortOrder() {
-            return 10;
-        }
-    }
-
     @BeforeAll
     public static void setup() {
-        // Register the test module
-        IGuiceContext.registerModule(new TestModule());
-        // Register the postgres module
-        IGuiceContext.registerModule("guiced.cdi.tests");
-        IGuiceContext.getContext().inject();
+        TestContextInitializer.ensureInitialized();
     }
 
     @Test
@@ -64,20 +42,5 @@ public class SimpleCDIBeanManagerTest {
 
         // Test containsBean with an existing bean
         assertTrue(beanManager.containsBean(GuiceCDIBeanManager.class), "Bean manager should contain itself");
-    }
-
-    /**
-     * A simple test bean class.
-     */
-    public static class TestBean {
-        private final String name;
-
-        public TestBean(String name) {
-            this.name = name;
-        }
-
-        public String getName() {
-            return name;
-        }
     }
 }

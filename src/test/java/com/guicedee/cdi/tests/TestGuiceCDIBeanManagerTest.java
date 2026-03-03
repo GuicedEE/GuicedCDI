@@ -4,7 +4,6 @@ import com.google.inject.AbstractModule;
 import com.google.inject.Guice;
 import com.google.inject.Injector;
 import com.google.inject.name.Names;
-import com.guicedee.client.IGuiceContext;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
@@ -17,20 +16,6 @@ public class TestGuiceCDIBeanManagerTest {
 
     private static Injector injector;
 
-    /**
-     * A simple test bean class.
-     */
-    public static class TestBean {
-        private final String name;
-
-        public TestBean(String name) {
-            this.name = name;
-        }
-
-        public String getName() {
-            return name;
-        }
-    }
 
     /**
      * A test module that binds the TestBean with a qualifier.

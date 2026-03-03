@@ -61,24 +61,4 @@ public class DirectGuiceCDIBeanManagerTest {
         assertTrue(beanManager.containsBean(TestGuiceCDIBeanManager.class), "Bean manager should contain itself");
     }
 
-    /**
-     * A simple test bean class.
-     */
-    public static class TestBean {
-        private final String name;
-
-        public TestBean(String name) {
-            this.name = name;
-        }
-
-        public String getName() {
-            return name;
-        }
-    }
-
-    /**
-     * A non-existent bean class for testing.
-     */
-    public static class NonExistentBean {
-    }
 }

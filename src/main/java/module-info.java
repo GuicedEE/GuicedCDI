@@ -19,6 +19,7 @@ module com.guicedee.cdi {
     provides com.google.inject.gee.BindingAnnotationProvider with BindingAnnotationsProvision;
     provides com.google.inject.gee.NamedAnnotationProvider with NamedAnnotationProvision;
     provides com.google.inject.gee.InjectorAnnotationsProvider with InjectorAnnotationsProvision;
+    provides com.google.inject.gee.ScopeAnnotationProvider with ScopeAnnotationProvision;
 
 
     uses ICDIProvider;

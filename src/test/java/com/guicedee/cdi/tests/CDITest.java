@@ -1,9 +1,6 @@
 package com.guicedee.cdi.tests;
 
-import com.google.inject.AbstractModule;
-import com.google.inject.name.Names;
 import com.guicedee.client.IGuiceContext;
-import com.guicedee.client.services.lifecycle.IGuiceModule;
 import com.guicedee.cdi.CDI;
 import com.guicedee.cdi.GuiceCDIBeanManager;
 import org.junit.jupiter.api.BeforeAll;
@@ -16,43 +13,9 @@ import static org.junit.jupiter.api.Assertions.*;
  */
 public class CDITest {
 
-    /**
-     * A test module that binds the TestBean with a qualifier.
-     */
-    public static class TestModule extends AbstractModule implements IGuiceModule<TestModule> {
-        @Override
-        protected void configure() {
-            bind(TestBean.class).annotatedWith(Names.named("testBean")).toInstance(new TestBean("test"));
-        }
-
-        @Override
-        public Integer sortOrder() {
-            return 10;
-        }
-    }
-
-    /**
-     * A simple test bean class.
-     */
-    public static class TestBean {
-        private final String name;
-
-        public TestBean(String name) {
-            this.name = name;
-        }
-
-        public String getName() {
-            return name;
-        }
-    }
-
     @BeforeAll
     public static void setup() {
-        // Register the postgres module
-        IGuiceContext.registerModule("guiced.cdi.tests");
-        // Register our own TestModule to bind TestBean with the qualifier "testBean"
-        IGuiceContext.registerModule(new TestModule());
-        IGuiceContext.getContext().inject();
+        TestContextInitializer.ensureInitialized();
     }
 
     @Test
