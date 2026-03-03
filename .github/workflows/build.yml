@@ -34,7 +34,7 @@ jobs:
     uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
     with:
       baseDir: ''
-      name: 'Guiced Cerial'
+      name: 'Guiced CDI'
       sonarProjectName: 'GuicedEE_GuicedCDI'
       sonarOrganization: 'guicedee'
       publishToCentral: ${{inputs.centralRelease}}
