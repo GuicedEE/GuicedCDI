@@ -35,3 +35,4 @@ flatter.pom
 .idea/
 **.iml
 /.vscode/settings.json
+/logs/
