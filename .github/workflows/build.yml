@@ -1,4 +1,4 @@
-name: GuicedEE Cerial
+name: GuicedEE CDI
 on:
   workflow_dispatch:
     inputs:
@@ -21,8 +21,8 @@ jobs:
     uses: GuicedEE/Workflows/.github/workflows/projects.yml@master
     with:
       baseDir: ''
-      name: 'Guiced Cerial'
-      sonarProjectName: 'GuicedEE_Cerial'
+      name: 'Guiced CDI'
+      sonarProjectName: 'GuicedEE_GuicedCDI'
       sonarOrganization: 'guicedee'
       skipDeploy: 'true'
     secrets: inherit
@@ -35,7 +35,7 @@ jobs:
     with:
       baseDir: ''
       name: 'Guiced Cerial'
-      sonarProjectName: 'GuicedEE_Cerial'
+      sonarProjectName: 'GuicedEE_GuicedCDI'
       sonarOrganization: 'guicedee'
       publishToCentral: ${{inputs.centralRelease}}
     secrets: inherit
