@@ -1,5 +1,7 @@
 # GuicedEE CDI
 
+> **⚠️ Migration & Compatibility Module** — This module is **not** part of the GuicedEE foundation. It exists solely to assist projects migrating from Jakarta CDI-based frameworks to the native Guice-first model. New projects should use Google Guice annotations and APIs directly. GuicedEE's foundation is **Guice**, not CDI.
+
 [![Build](https://github.com/GuicedEE/GuicedCDI/actions/workflows/build.yml/badge.svg)](https://github.com/GuicedEE/Guiced-CDI/actions/workflows/build.yml)
 [![Maven Central](https://img.shields.io/maven-central/v/com.guicedee/cdi)](https://central.sonatype.com/artifact/com.guicedee/cdi)
 [![Maven Snapshot](https://img.shields.io/nexus/s/com.guicedee/cdi?server=https%3A%2F%2Foss.sonatype.org&label=Maven%20Snapshot)](https://oss.sonatype.org/content/repositories/snapshots/com/guicedee/cdi/)
@@ -9,8 +11,10 @@
 ![Guice 7](https://img.shields.io/badge/Guice-7%2B-green)
 ![Maven 4](https://img.shields.io/badge/Maven-4%2B-green)
 
-Lightweight **Jakarta CDI bridge** for [GuicedEE](https://github.com/GuicedEE) applications.
-Maps CDI annotations (`@Inject`, `@Named`, `@ApplicationScoped`, `@Qualifier`) to their Guice equivalents, provides a `BeanManager` adapter backed by the Guice injector, and registers itself as the Jakarta `CDIProvider` — so CDI-annotated code runs seamlessly inside a Guice-managed container.
+Lightweight **Jakarta CDI compatibility bridge** for [GuicedEE](https://github.com/GuicedEE) applications **migrating from CDI-based frameworks**.
+Maps CDI annotations (`@Inject`, `@Named`, `@ApplicationScoped`, `@Qualifier`) to their Guice equivalents, provides a `BeanManager` adapter backed by the Guice injector, and registers itself as the Jakarta `CDIProvider` — so existing CDI-annotated code runs seamlessly inside a Guice-managed container during migration.
+
+> **For new projects:** Use Google Guice annotations (`com.google.inject.Inject`, `@Singleton`, `@Provides`, etc.) directly. This module is intended as a transitional bridge, not a permanent dependency.
 
 Built on [Google Guice](https://github.com/google/guice) · [Jakarta CDI](https://jakarta.ee/specifications/cdi/) · JPMS module `com.guicedee.cdi` · Java 25+
 
@@ -27,7 +31,7 @@ Built on [Google Guice](https://github.com/google/guice) · [Jakarta CDI](https:
 <summary>Gradle (Kotlin DSL)</summary>
 
 ```kotlin
-implementation("com.guicedee:cdi:2.0.0-RC2")
+implementation("com.guicedee:cdi:2.0.0-RC3")
 ```
 </details>
 
