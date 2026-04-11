@@ -27,7 +27,7 @@ Built on [Google Guice](https://github.com/google/guice) · [Jakarta CDI](https:
 <summary>Gradle (Kotlin DSL)</summary>
 
 ```kotlin
-implementation("com.guicedee:cdi:2.0.0-RC1")
+implementation("com.guicedee:cdi:2.0.0-RC2")
 ```
 </details>
 
