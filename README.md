@@ -4,7 +4,7 @@
 
 [![Build](https://github.com/GuicedEE/GuicedCDI/actions/workflows/build.yml/badge.svg)](https://github.com/GuicedEE/Guiced-CDI/actions/workflows/build.yml)
 [![Maven Central](https://img.shields.io/maven-central/v/com.guicedee/cdi)](https://central.sonatype.com/artifact/com.guicedee/cdi)
-[![Maven Snapshot](https://img.shields.io/nexus/s/com.guicedee/cdi?server=https%3A%2F%2Foss.sonatype.org&label=Maven%20Snapshot)](https://oss.sonatype.org/content/repositories/snapshots/com/guicedee/cdi/)
+[![Snapshot](https://img.shields.io/badge/Snapshot-2.0.0-SNAPSHOT-orange)](https://github.com/GuicedEE/Packages/packages/maven/com.guicedee.cdi)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue)](https://www.apache.org/licenses/LICENSE-2.0)
 
 ![Java 25+](https://img.shields.io/badge/Java-25%2B-green)
@@ -98,23 +98,39 @@ The CDI module itself is loaded automatically — no JPMS `provides` declaration
 
 ## 📐 Architecture
 
-```
-Startup
-  IGuiceContext.instance()
-   └─ IGuiceModule hooks
-       └─ GuiceCDIModule.configure()
-           ├─ bind(GuiceCDIBeanManager.class)           → Singleton
-           ├─ bind(ICDIProvider.class)                  → GuiceCDIProvider (Singleton)
-           ├─ bind(GuiceCDIBeanManagerAdapterImpl.class) → Singleton
-           ├─ bind(BeanManager.class)                   → GuiceCDIBeanManagerAdapterImpl
-           ├─ bind(JakartaCDIProvider.class)             → Singleton
-           └─ CDI.setCDIProvider(new JakartaCDIProvider())
-   └─ Guice SPI providers (auto-registered via JPMS)
-       ├─ BindScopeProvision         → @Singleton, @ApplicationScoped → SINGLETON
-       ├─ InjectionPointProvision    → @Inject, @Named, @PostConstruct detection
-       ├─ BindingAnnotationsProvision → @Qualifier as binding annotation
-       ├─ NamedAnnotationProvision   → jakarta.inject.Named → Guice Names.named()
-       └─ InjectorAnnotationsProvision → jakarta.inject.Inject recognition
+```mermaid
+flowchart TD
+    n1["Startup"]
+    n2["IGuiceContext.instance()"]
+    n1 --> n2
+    n3["IGuiceModule hooks"]
+    n2 --> n3
+    n4["GuiceCDIModule.configure()"]
+    n3 --> n4
+    n5["bind(GuiceCDIBeanManager.class)           → Singleton"]
+    n4 --> n5
+    n6["bind(ICDIProvider.class)                  → GuiceCDIProvider<br/>Singleton"]
+    n4 --> n6
+    n7["bind(GuiceCDIBeanManagerAdapterImpl.class) → Singleton"]
+    n4 --> n7
+    n8["bind(BeanManager.class)                   → GuiceCDIBeanManagerAdapterImpl"]
+    n4 --> n8
+    n9["bind(JakartaCDIProvider.class)             → Singleton"]
+    n4 --> n9
+    n10["CDI.setCDIProvider(new JakartaCDIProvider())"]
+    n4 --> n10
+    n11["Guice SPI providers<br/>auto-registered via JPMS"]
+    n2 --> n11
+    n12["BindScopeProvision         → @Singleton, @ApplicationScoped → SINGLETON"]
+    n11 --> n12
+    n13["InjectionPointProvision    → @Inject, @Named, @PostConstruct detection"]
+    n11 --> n13
+    n14["BindingAnnotationsProvision → @Qualifier as binding annotation"]
+    n11 --> n14
+    n15["NamedAnnotationProvision   → jakarta.inject.Named → Guice Names.named()"]
+    n11 --> n15
+    n16["InjectorAnnotationsProvision → jakarta.inject.Inject recognition"]
+    n11 --> n16
 ```
 
 ### CDI Provider chain
@@ -187,11 +203,12 @@ The Guice module that wires everything together. Loaded automatically via `IGuic
 
 ## 🗺️ Module Graph
 
-```
-com.guicedee.cdi
- ├── com.guicedee.client              (SPI contracts — IGuiceModule, IGuiceContext)
- ├── jakarta.cdi                      (Jakarta CDI API — BeanManager, CDI, CDIProvider)
- └── jakarta.el                       (Expression Language — required by BeanManager interface)
+```mermaid
+flowchart LR
+    com_guicedee_cdi["com.guicedee.cdi"]
+    com_guicedee_cdi --> com_guicedee_client["com.guicedee.client<br/>SPI contracts — IGuiceModule, IGuiceContext"]
+    com_guicedee_cdi --> jakarta_cdi["jakarta.cdi<br/>Jakarta CDI API — BeanManager, CDI, CDIProvider"]
+    com_guicedee_cdi --> jakarta_el["jakarta.el<br/>Expression Language — required by BeanManager interface"]
 ```
 
 ## 🤝 Contributing
