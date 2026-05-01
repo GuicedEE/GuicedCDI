@@ -4,12 +4,10 @@
 
 [![Build](https://github.com/GuicedEE/GuicedCDI/actions/workflows/build.yml/badge.svg)](https://github.com/GuicedEE/Guiced-CDI/actions/workflows/build.yml)
 [![Maven Central](https://img.shields.io/maven-central/v/com.guicedee/cdi)](https://central.sonatype.com/artifact/com.guicedee/cdi)
-[![Snapshot](https://img.shields.io/badge/Snapshot-2.0.1-SNAPSHOT-SNAPSHOT-orange)](https://github.com/GuicedEE/Packages/packages/maven/com.guicedee.cdi)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue)](https://www.apache.org/licenses/LICENSE-2.0)
 
 ![Java 25+](https://img.shields.io/badge/Java-25%2B-green)
 ![Guice 7](https://img.shields.io/badge/Guice-7%2B-green)
-![Maven 4](https://img.shields.io/badge/Maven-4%2B-green)
 
 Lightweight **Jakarta CDI compatibility bridge** for [GuicedEE](https://github.com/GuicedEE) applications **migrating from CDI-based frameworks**.
 Maps CDI annotations (`@Inject`, `@Named`, `@ApplicationScoped`, `@Qualifier`) to their Guice equivalents, provides a `BeanManager` adapter backed by the Guice injector, and registers itself as the Jakarta `CDIProvider` — so existing CDI-annotated code runs seamlessly inside a Guice-managed container during migration.
